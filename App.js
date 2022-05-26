@@ -25,8 +25,13 @@ function HomeScreen({ navigation }) {
 
   const storeData = async (foodItem, foodPriceItem) => {
     try {
-      await AsyncStorage.setItem("Name", foodItem);
-      await AsyncStorage.setItem("Price", foodPriceItem);
+      if (foodItem) {
+        await AsyncStorage.setItem("Name", foodItem);
+      }
+      if (foodPriceItem) {
+        await AsyncStorage.setItem("Price", foodPriceItem);
+      }
+
       alert("Data Added");
     } catch (e) {
       // saving error
